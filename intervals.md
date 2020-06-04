@@ -1,26 +1,26 @@
  # Intervals
 
-+ [Non-overlapping Intervals](#non-overlapping-intervals)
++ [merge-intervals](#merge-intervals)
 
-## Non-overlapping Intervals
+## merge-intervals
 
- https://leetcode.com/problems/non-overlapping-intervals/ 
+ https://leetcode.com/problems/merge-intervals/ 
 
  ```python
-class Solution(object):
-    def eraseOverlapIntervals(self, intervals):
-        if len(intervals) <= 1:
-            return 0
-        
-        intervals.sort(key = lambda x: x[1])
-        
-        prev = intervals[0]
-        erased = 0
-        for interval in intervals[1:]:
-            if interval[0] < prev[1]:
-                erased += 1
-            else:
-                prev = interval
-            
-        return erased
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort()
+        i = 0
+        n = len(intervals)
+        results = []
+        while(i < n):
+            start = intervals[i][0]
+            end = intervals[i][1]
+            while(i < n-1 and intervals[i+1][0] <= end):
+                end = max(end, intervals[i+1][1])
+                i += 1
+            results.append([start, end])
+            i += 1
+
+        return results
  ```
