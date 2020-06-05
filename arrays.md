@@ -4,7 +4,7 @@
 
 ## two-sum
 
- https://leetcode.com/problems/two-sum/ 
+ https://leetcode.com/problems/two-sum/
 
  ```python
 class Solution:
