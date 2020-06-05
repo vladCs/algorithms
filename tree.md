@@ -1,28 +1,30 @@
  # Tree
 
-+ [kth-smallest-element-in-a-bst](#kth-smallest-element-in-a-bst)
++ [validate-binary-search-tree](#validate-binary-search-tree)
 
 ## subtree-of-another-tree
 
- https://leetcode.com/problems/kth-smallest-element-in-a-bst/ 
+ https://leetcode.com/problems/validate-binary-search-tree/ 
 
  ```python
 class Solution:
-    def kthSmallest(self, root, k):
-        was = set()
-        stack = [root]
-        while(stack):
-            currNode = stack.pop()
-            if((not currNode.left and not currNode.right) or currNode in was):
-                k -= 1
-                if(k == 0):
-                    return currNode.val
-            else:
-                was.add(currNode)
-                if(currNode.right):
-                    stack.append(currNode.right)
-                stack.append(currNode)
-                if(currNode.left):
-                    stack.append(currNode.left)
+    def isValidBST(self, root):
+        if(not root):
+            return True
+        arr = []
+        arr = self.inOrder(root, arr)
+        if(len(set(arr)) != len(arr)):
+            return False
+        copy_arr = arr[:]
+        copy_arr.sort()
+        return copy_arr == arr
+
+    def inOrder(self, root, arr):
+        if not root:
+            return
+        self.inOrder(root.left, arr)
+        arr.append(root.val)
+        self.inOrder(root.right, arr)
+        return arr
 
  ```
