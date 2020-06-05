@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def ThreeSum(self, nums):
+    def threeSum(self, nums):
         nums.sort()
         ans = set()
         for i, v in enumerate(nums):
