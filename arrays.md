@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def TwoSum(self, nums, target):
+    def twoSum(self, nums, target):
         d = {}
         for i, num in enumerate(nums):
             if target - num in d:
