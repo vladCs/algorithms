@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def insert(self, intervals):
+    def Insert(self, intervals):
         intervals.append(newInterval)
         intervals.sort(key=lambda x: x[0])
         result = []
