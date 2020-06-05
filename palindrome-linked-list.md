@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def isPalindrome(self, head: ListNode) -> bool:
+    def isPalindrome(self, head):
         if head is None or head.next is None:
             return True
         list = []
