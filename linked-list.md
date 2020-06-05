@@ -1,25 +1,21 @@
  # Linked-list
 
-+ [linked-list-cycle-ii](#linked-list-cycle-ii)
++ [linked-list-cycle](#linked-list-cycle)
 
-## linked-list-cycle-ii
+## linked-list-cycle
 
- https://leetcode.com/problems/linked-list-cycle-ii/
+ https://leetcode.com/problems/linked-list-cycle/
 
  ```python
 class Solution:
-    def detectCycle(self, head):
-        if head is None or head.next is None:
-            return None
-        else:
-            dic = {}
-            current = head
-            while current.next is not None:
-                if current in dic:
-                    return current
-                else:
-                    dic[current] = 1
-                current = current.next
-            return None
+    def hasCycle(self, head):
+        s = head
+        f = head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+            if s == f:
+                return True
+        return False
 
  ```
