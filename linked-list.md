@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def reverseList(self, head):
+    def ReverseList(self, head):
         prev = None
         cur_node = head
         while cur_node:
