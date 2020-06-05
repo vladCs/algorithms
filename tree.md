@@ -1,22 +1,26 @@
  # Tree
 
-+ [binary-tree-inorder-traversal](#binary-tree-inorder-traversal)
++ [symmetric-tree](#symmetric-tree)
 
-## binary-tree-inorder-traversal
+## symmetric-tree
 
- https://leetcode.com/problems/binary-tree-inorder-traversal/ 
+ https://leetcode.com/problems/symmetric-tree/ 
 
  ```python
 class Solution:
-    def help(self, root, l):
-        if root:
-            self.help(root.left, l)
-            l.append(root.val)
-            self.help(root.right, l)
-            return l
+    def isSymmetric(self, root):
+        path = []
 
-    def inorderTraversal(self, root):
-        l = []
-        return self.help(root, l)
+        def euler(node):
+            if not node:
+                path.append(None)
+                return
+            path.append(node.val)
+            euler(node.left)
+            path.append(node.val)
+            euler(node.right)
+            path.append(node.val)
+        euler(root)
+        return path == path[::-1]
 
  ```
