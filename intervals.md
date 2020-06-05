@@ -8,7 +8,7 @@
 
  ```python
 class Solution(object):
-    def EraseOverlapIntervals(self, intervals):
+    def eraseOverlapIntervals(self, intervals):
         if len(intervals) <= 1:
             return 0
         
