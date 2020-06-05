@@ -1,30 +1,31 @@
  # Tree
 
-+ [validate-binary-search-tree](#validate-binary-search-tree)
++ [binary-search-tree-iterator](#binary-search-tree-iterator)
 
-## subtree-of-another-tree
+## binary-search-tree-iterator
 
- https://leetcode.com/problems/validate-binary-search-tree/ 
+ https://leetcode.com/problems/binary-search-tree-iterator/ 
 
  ```python
-class Solution:
-    def isValidBST(self, root):
-        if(not root):
-            return True
-        arr = []
-        arr = self.inOrder(root, arr)
-        if(len(set(arr)) != len(arr)):
-            return False
-        copy_arr = arr[:]
-        copy_arr.sort()
-        return copy_arr == arr
+class BSTIterator:
 
-    def inOrder(self, root, arr):
-        if not root:
-            return
-        self.inOrder(root.left, arr)
-        arr.append(root.val)
-        self.inOrder(root.right, arr)
-        return arr
+    def __init__(self, root):
+        self.traverse = []
+
+        def inOrderTraversal(node):
+            if node is not None:
+                inOrderTraversal(node.left)
+                self.traverse.append(node.val)
+                inOrderTraversal(node.right)
+        inOrderTraversal(root)
+
+    def next(self):
+        if self.hasNext():
+            return self.traverse.pop(0)
+
+    def hasNext(self):
+        if len(self.traverse) != 0:
+            return True
+        return False
 
  ```
