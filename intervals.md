@@ -21,6 +21,5 @@ class Solution:
                 i += 1
             results.append([start, end])
             i += 1
-
         return results
  ```
