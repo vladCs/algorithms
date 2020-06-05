@@ -1,25 +1,28 @@
  # Tree
 
-+ [subtree-of-another-tree](#subtree-of-another-tree)
++ [kth-smallest-element-in-a-bst](#kth-smallest-element-in-a-bst)
 
 ## subtree-of-another-tree
 
- https://leetcode.com/problems/subtree-of-another-tree/ 
+ https://leetcode.com/problems/kth-smallest-element-in-a-bst/ 
 
  ```python
 class Solution:
-    def isSubtree(self, s, t):
-        if not s:
-            return False
-        if self.isSameTree(s, t):
-            return True
-        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
-
-    def isSameTree(self, p, q):
-        if p and q:
-            rez1 = self.isSameTree(p.left, q.left)
-            rez2 = self.isSameTree(p.right, q.right)
-            return p.val == q.val and rez1 and rez2
-        return p is q
+    def kthSmallest(self, root, k):
+        was = set()
+        stack = [root]
+        while(stack):
+            currNode = stack.pop()
+            if((not currNode.left and not currNode.right) or currNode in was):
+                k -= 1
+                if(k == 0):
+                    return currNode.val
+            else:
+                was.add(currNode)
+                if(currNode.right):
+                    stack.append(currNode.right)
+                stack.append(currNode)
+                if(currNode.left):
+                    stack.append(currNode.left)
 
  ```
