@@ -7,7 +7,7 @@
  https://leetcode.com/problems/reorder-list/ 
 
  ```python
-class Solution(object):
+class Solution:
     def reorderList(self, head):
         if not head:
             return
