@@ -1,26 +1,21 @@
  # Tree
 
-+ [symmetric-tree](#symmetric-tree)
++ [same-tree](#same-tree)
 
-## symmetric-tree
+## same-tree
 
- https://leetcode.com/problems/symmetric-tree/ 
+ https://leetcode.com/problems/same-tree/ 
 
  ```python
 class Solution:
-    def isSymmetric(self, root):
-        path = []
+    def maxDepth(self, root):
 
-        def euler(node):
+        def helper(node, s):
             if not node:
-                path.append(None)
-                return
-            path.append(node.val)
-            euler(node.left)
-            path.append(node.val)
-            euler(node.right)
-            path.append(node.val)
-        euler(root)
-        return path == path[::-1]
+                return 0
+            if not node.right and not node.left:
+                return s
+            return max(helper(node.left, s + 1), helper(node.right, s + 1))
+        return helper(root, 1)
 
  ```
