@@ -8,7 +8,7 @@
 
  ```python
 class Solution:
-    def SubarraySum(self, nums, k):
+    def subarraySum(self, nums, k):
         d = defaultdict(int)
         d[0] += 1
         temp = 0
