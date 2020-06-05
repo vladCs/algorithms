@@ -8,14 +8,17 @@
 
  ```python
 class Solution:
-    def maxDepth(self, root):
+    def isSameTree(self, p, q):
+        return isSameNode(p, q)
 
-        def helper(node, s):
-            if not node:
-                return 0
-            if not node.right and not node.left:
-                return s
-            return max(helper(node.left, s + 1), helper(node.right, s + 1))
-        return helper(root, 1)
+
+def isSameNode(p, q):
+    if not (p and q):
+        return not (p or q)
+    check = isSameNode(p.left, q.left) and isSameNode(p.right, q.right)
+    if p.val == q.val and check:
+        return True
+    else:
+        return False
 
  ```
